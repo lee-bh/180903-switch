@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>switch example</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+	<link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/8.0.0/normalize.css">
+	<style>
+		#switch{ position: absolute; top:100px; left:100px; width:600px; height:530px; background: url('./img/switch-off.png'); background-size: 100% auto; cursor:pointer; }
+		#ex1{ position: absolute; top:400px; left:450px; width:300px;height:300px; background: url('./img/exercise-off.gif'); background-size: 100% auto;  }
+		body{background: black}
+	</style>
+</head>
+<body>
+	<div id="switch"></div>
+	<audio id="switchSound">
+  		<source src="./img/switch-sound.wav" type="audio/wav">
+	</audio>
+	<audio id="backgroundMusic" loop>
+  		<source src="./img/zombie.mp3" type="audio/mpeg">
+	</audio>
+	<div id="ex1"></div>
+
+	<script>
+		var t = document.getElementById("switch");
+		var on = false;
+		t.onclick = function(){
+			if(on){
+				t.style.background = "url(./img/switch-off.png) no-repeat";
+				t.style.backgroundSize = "100% auto";
+				on = false;
+				switchSound.currentTime = 0;
+				switchSound.play();
+				document.body.style.background = "black";
+				ex1.style.background = "url(./img/exercise-off.gif)";
+				ex1.style.backgroundSize = "100% auto";
+				backgroundMusic.pause();
+			}else{
+				t.style.background = "url(./img/switch-on.png) no-repeat";
+				t.style.backgroundSize = "100% auto";
+				on = true;
+				switchSound.currentTime = 0;
+				switchSound.play();
+				document.body.style.background = "white";
+				ex1.style.background = "url(./img/exercise-on.gif)";
+				ex1.style.backgroundSize = "100% auto";
+				backgroundMusic.currentTime = 0;
+				backgroundMusic.play();
+			}
+		}
+	</script>
+</body>
+</html>
